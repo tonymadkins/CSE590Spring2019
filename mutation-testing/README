@@ -1,0 +1,26 @@
+Testing
+-------
+Run 'ant test' to run all test cases.
+
+Coverage
+--------
+Run './coverage.sh' to compute the coverage results. After completion, you can
+view the html coverage report: reports/index.html
+
+Mutation
+--------
+Run './mutation.sh' to compute the mutation score. After completion, the
+following files provide additional information about the generated, killed, and
+live mutants:
+mutants.log: a summary of the generated mutants (i.e., what part of the code was
+             changed and how).
+killed.csv:  a summary of whether a mutant is still live or was killed with an
+             exception/assertion/timeout.
+summary.csv: a one-line summary that indicates how many mutants were generated
+             and killed, and how long the analysis took.
+
+Rather than reading the mutants.log file, you can show the source code
+differences between a mutant and the original program by running:
+./show_mutant.sh <mutant ID>
+For example, './show_mutant.sh 20' shows how mutant 20 differs from the original
+program.

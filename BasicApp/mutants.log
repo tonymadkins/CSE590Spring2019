@@ -1,0 +1,21 @@
+1:LVR:POS:0:Main@main(java.lang.String[]):5:1 |==> 0
+2:LVR:POS:NEG:Main@main(java.lang.String[]):5:1 |==> -1
+3:ROR:<(int,int):!=(int,int):Main@main(java.lang.String[]):5:args.length < 1 |==> args.length != 1
+4:ROR:<(int,int):<=(int,int):Main@main(java.lang.String[]):5:args.length < 1 |==> args.length <= 1
+5:ROR:<(int,int):FALSE(int,int):Main@main(java.lang.String[]):5:args.length < 1 |==> false
+6:STD:<CALL>:<NO-OP>:Main@main(java.lang.String[]):6:System.out.println("We need arguments!") |==> <NO-OP>
+7:LVR:POS:0:Main@main(java.lang.String[]):8:1 |==> 0
+8:LVR:POS:NEG:Main@main(java.lang.String[]):8:1 |==> -1
+9:ROR:>(int,int):!=(int,int):Main@main(java.lang.String[]):8:args.length > 1 |==> args.length != 1
+10:ROR:>(int,int):>=(int,int):Main@main(java.lang.String[]):8:args.length > 1 |==> args.length >= 1
+11:ROR:>(int,int):FALSE(int,int):Main@main(java.lang.String[]):8:args.length > 1 |==> false
+12:STD:<CALL>:<NO-OP>:Main@main(java.lang.String[]):9:System.out.print("Too many arguments!") |==> <NO-OP>
+13:LVR:0:POS:Main@main(java.lang.String[]):12:0 |==> 1
+14:LVR:0:NEG:Main@main(java.lang.String[]):12:0 |==> -1
+15:LVR:POS:0:Main@main(java.lang.String[]):13:99999 |==> 0
+16:LVR:POS:NEG:Main@main(java.lang.String[]):13:99999 |==> -99999
+17:ROR:>(int,int):!=(int,int):Main@main(java.lang.String[]):13:x > 99999 |==> x != 99999
+18:ROR:>(int,int):>=(int,int):Main@main(java.lang.String[]):13:x > 99999 |==> x >= 99999
+19:ROR:>(int,int):FALSE(int,int):Main@main(java.lang.String[]):13:x > 99999 |==> false
+20:STD:<CALL>:<NO-OP>:Main@main(java.lang.String[]):14:System.out.println("That\'s six figures") |==> <NO-OP>
+21:STD:<CALL>:<NO-OP>:Main@main(java.lang.String[]):16:System.out.println("That\'s less than six figures") |==> <NO-OP>

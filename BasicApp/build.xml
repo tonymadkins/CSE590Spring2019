@@ -1,0 +1,77 @@
+<project name="Main" default="compile" basedir=".">
+
+<!-- Target to clean up -->
+    <target name="clean" description="Clean">
+        <delete dir="bin"/>
+        <delete dir=".instrumented"/>
+    </target>
+
+<!-- Target to initialize build -->
+    <target name="init">
+        <mkdir dir="bin"/>
+    </target>
+
+<!-- Target to compile the project -->
+    <target name="compile" depends="init" description="Compile">
+        <javac includeantruntime="true"
+               srcdir="src"
+               destdir="bin"
+               source="1.7"
+               target="1.7"
+             compiler="javac1.7"
+               nowarn="true"
+                debug="yes">
+        </javac>
+    </target>
+
+<!-- Target to compile the test suite -->
+    <target name="compile.tests" depends="compile" description="Compile all tests">
+        <javac includeantruntime="true"
+               srcdir="test"
+              destdir="bin"
+               source="1.7"
+               target="1.7"
+             compiler="javac1.7"
+               nowarn="true"
+                debug="yes">
+                <classpath location="lib/junit-4.11.jar"/>
+        </javac>
+    </target>
+
+<!-- The original test target -->
+    <target name="test" depends="compile.tests" description="Run all unit test cases">
+        <echo message="Running unit tests ..."/>
+        <junit  printsummary="true"
+                  showoutput="true"
+                        fork="true"
+               haltonfailure="false">
+            <formatter type="plain" usefile="false"/>
+            <classpath path=".instrumented"/>
+            <classpath path="bin"/>
+            <classpath location="lib/junit-4.11.jar"/>
+
+            <batchtest fork="true">
+                <fileset dir="test">
+                    <include name="**/*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+	<target name="mutation.test" description="Run mutation analysis">
+		<junit printsummary="false"
+			showoutput="false"
+			haltonfailure="true"
+			mutationAnalysis="true"
+			summaryFile="summary.csv"
+			resultFile="results.csv"
+			killDetailsFile="killed.csv">
+			<classpath path="bin"/>
+			<batchtest fork="no">
+				<fileset dir="test">
+					<include name="**/*Test*.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+</project>
